@@ -17,11 +17,11 @@
     }
 
     ::-webkit-scrollbar-thumb {
-        @apply bg-[rgb(5,234,250)];
+        @apply bg-zinc-700;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        @apply bg-[rgb(5,234,250)]/80; 
+        @apply bg-zinc-600; 
     }
 
     textarea, input:focus {
@@ -39,11 +39,11 @@
 
 @layer components{
     .pi{
-        @apply p-2 mb-2 text-black bg-white rounded text-[0.9rem];
+        @apply p-2 mb-2 text-white bg-zinc-800/70 backdrop-blur-sm rounded text-[0.9rem] border border-white/10;
     }
 
     .profileInput{
-        @apply pi file:border-0 file:bg-[rgb(5,234,250)] file:text-white file:rounded-sm;
+        @apply pi file:border-0 file:bg-zinc-800 file:text-white file:rounded-sm;
     }
 
     .flex-col-gap-2{
@@ -55,7 +55,7 @@
     }
 
     .other-input{
-        @apply p-2 mb-2 text-black bg-white rounded focus:placeholder-transparent;
+        @apply p-2 mb-2 text-white bg-zinc-800/70 backdrop-blur-sm rounded focus:placeholder-transparent border border-white/10;
     }
 
     .input-title{
