@@ -2,6 +2,8 @@
 
 A modern, ATS-optimized resume builder featuring professionally designed templates easy to use.
 
+![Preview](preview.png)
+
 ## ✨ Key Features
 
 - **Multiple Professional Templates**: Choose from carefully crafted, industry-standard resume layouts
@@ -21,11 +23,6 @@ A modern, ATS-optimized resume builder featuring professionally designed templat
 - React Beautiful DnD - Drag and Drop functionality
 - React Icons - Professional icons
 - Local Storage - Data persistence
-
-## 🚀 Getting Started
-
-1. Clone the repository:
-
 
 ## 📦 Installation
 
@@ -70,7 +67,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- Special thanks to the open-source community and [Github Projects](https://github.com/github/projects)
+- Special thanks to the open-source community and [Github Projects](https://x.com/githubprojects)
 - Inspired by modern recruitment needs and ATS requirements
 
 ## ⚠️ Important Note
