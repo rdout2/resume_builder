@@ -51,7 +51,12 @@ const TemplateTwo = ({
             <h2 className="section-title border-b-2 border-gray-300 mb-1">Certifications</h2>
             <ul className="list-disc pl-4 content">
               {certificationsdata && certificationsdata.map((cert, i) => (
-                <li key={i} className="content">{cert}</li>
+                <li key={i} className="content">
+                  {cert.name}
+                  {cert.issuer && (
+                    <span className="text-gray-600"> - {cert.issuer}</span>
+                  )}
+                </li>
               ))}
             </ul>
           </div>

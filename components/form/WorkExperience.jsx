@@ -1,6 +1,7 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
 import { ResumeContext } from "../../pages/builder";
+import AISuggestionButton from '../ai/AISuggestionButton';
 
 const WorkExperience = () => {
   const {
@@ -59,6 +60,13 @@ const WorkExperience = () => {
             value={workExperience.position}
             onChange={(e) => handleWorkExperience(e, index)}
           />
+          <div className="flex justify-between items-center">
+            <label>Description</label>
+            <AISuggestionButton 
+              section="work experience description" 
+              content={workExperience.description} 
+            />
+          </div>
           <textarea
             type="text"
             placeholder="Description"
@@ -68,6 +76,13 @@ const WorkExperience = () => {
             maxLength="250"
             onChange={(e) => handleWorkExperience(e, index)}
           />
+          <div className="flex justify-between items-center">
+            <label>Key Achievements</label>
+            <AISuggestionButton 
+              section="work achievements" 
+              content={workExperience.keyAchievements} 
+            />
+          </div>
           <textarea
             type="text"
             placeholder="Key Achievements"

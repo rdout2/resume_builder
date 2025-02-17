@@ -6,6 +6,7 @@ import {
   FaInstagram,
   FaYoutube,
   FaExchangeAlt,
+  FaExternalLinkAlt,
 } from "react-icons/fa";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { CgWebsite } from "react-icons/cg";
@@ -381,20 +382,25 @@ const Preview = () => {
                                     "outline-dashed outline-2 outline-gray-400 bg-white"
                                   }`}
                                 >
-                                  <p className="content i-bold">{item.name}</p>
+                                  <div className="flex items-center gap-2">
+                                    <p className="content i-bold">{item.name}</p>
+                                    {item.link && (
+                                      <Link
+                                        href={item.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-600 hover:text-blue-800"
+                                        title={item.link}
+                                      >
+                                        <FaExternalLinkAlt size={12} />
+                                      </Link>
+                                    )}
+                                  </div>
                                   <DateRange
                                     startYear={item.startYear}
                                     endYear={item.endYear}
                                     id={`work-experience-start-end-date`}
                                   />
-                                  <Link
-                                    href={item.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="content"
-                                  >
-                                    {item.link}
-                                  </Link>
                                   <p className="content">{item.description}</p>
                                   <Droppable
                                     droppableId={`PROJECTS_KEY_ACHIEVEMENT-${index}`}
