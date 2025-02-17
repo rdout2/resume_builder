@@ -46,13 +46,20 @@ const Draggable = dynamic(
 const Preview = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
   const [currentTemplate, setCurrentTemplate] = useState("template1");
-  const [sectionOrder, setSectionOrder] = useState([
+  
+  // Initialize sectionOrder with all sections including certifications
+  const defaultSections = [
     "summary",
     "education",
     "projects",
     "experience",
-    "skills"
-  ]);
+    "skills",
+    "softskills",
+    "languages",
+    "certifications"
+  ];
+
+  const [sectionOrder, setSectionOrder] = useState(defaultSections);
 
   const icons = [
     { name: "github", icon: <FaGithub /> },
@@ -127,6 +134,7 @@ const Preview = () => {
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
     
+    
     setSectionOrder(items);
     localStorage.setItem('sectionOrder', JSON.stringify(items));
   };
@@ -134,7 +142,15 @@ const Preview = () => {
   useEffect(() => {
     const savedOrder = localStorage.getItem('sectionOrder');
     if (savedOrder) {
-      setSectionOrder(JSON.parse(savedOrder));
+      // Ensure certifications is included in the saved order
+      const parsedOrder = JSON.parse(savedOrder);
+      if (!parsedOrder.includes("certifications")) {
+        parsedOrder.push("certifications");
+      }
+      setSectionOrder(parsedOrder);
+    } else {
+      // If no saved order, use default sections
+      localStorage.setItem('sectionOrder', JSON.stringify(defaultSections));
     }
   }, []);
 
@@ -148,7 +164,7 @@ const Preview = () => {
         <FaExchangeAlt />
       </button>
       <A4PageWrapper>
-        <DragDropContext onDragEnd={onDragEnd}>
+        <DragDropContext onDragEnd={currentTemplate === "template1" ? onDragEnd : handleTemplateTwoDragEnd}>
           {currentTemplate === "template1" ? (
             <div className="f-col items-center mb-1">
               {resumeData.profilePicture.length > 0 && (
@@ -457,6 +473,8 @@ const Preview = () => {
               projectsdata={resumeData.projects}
               workExperiencedata={resumeData.workExperience}
               skillsdata={resumeData.skills}
+              languagesdata={resumeData.languages}
+              certificationsdata={resumeData.certifications}
               sectionOrder={sectionOrder}
               onDragEnd={handleTemplateTwoDragEnd}
               resumeData={resumeData}
@@ -474,7 +492,6 @@ const A4PageWrapper = ({ children }) => {
   const alertA4Size = () => {
     const preview = document.querySelector(".preview");
     const previewHeight = preview.offsetHeight;
-    console.log(previewHeight);
     if (previewHeight > 1122) {
       alert("A4 size exceeded");
     }
