@@ -14,7 +14,7 @@ import DateRange from "../utility/DateRange";
 import ContactInfo from "./ContactInfo";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ResumeContext } from "../../pages/builder";
 import dynamic from "next/dynamic";
 import Language from "./Language";
@@ -46,6 +46,13 @@ const Draggable = dynamic(
 const Preview = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
   const [currentTemplate, setCurrentTemplate] = useState("template1");
+  const [sectionOrder, setSectionOrder] = useState([
+    "summary",
+    "education",
+    "projects",
+    "experience",
+    "skills"
+  ]);
 
   const icons = [
     { name: "github", icon: <FaGithub /> },
@@ -112,6 +119,24 @@ const Preview = () => {
       setResumeData({ ...resumeData, projects: newProjects });
     }
   };
+
+  const handleTemplateTwoDragEnd = (result) => {
+    if (!result.destination) return;
+    
+    const items = Array.from(sectionOrder);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+    
+    setSectionOrder(items);
+    localStorage.setItem('sectionOrder', JSON.stringify(items));
+  };
+
+  useEffect(() => {
+    const savedOrder = localStorage.getItem('sectionOrder');
+    if (savedOrder) {
+      setSectionOrder(JSON.parse(savedOrder));
+    }
+  }, []);
 
   return (
     <div className="md:max-w-[60%] sticky top-0 preview rm-padding-print p-6 md:overflow-y-scroll md:h-screen">
@@ -432,6 +457,10 @@ const Preview = () => {
               projectsdata={resumeData.projects}
               workExperiencedata={resumeData.workExperience}
               skillsdata={resumeData.skills}
+              sectionOrder={sectionOrder}
+              onDragEnd={handleTemplateTwoDragEnd}
+              resumeData={resumeData}
+              setResumeData={setResumeData}
             />
           )}
         </DragDropContext>
