@@ -50,7 +50,7 @@ const Projects = () => {
           />
           <input
             type="text"
-            placeholder="Link"
+            placeholder="Include https:// in the link"
             name="link"
             className="w-full other-input"
             value={project.link}

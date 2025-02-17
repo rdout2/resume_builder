@@ -52,7 +52,6 @@ export default function Builder(props) {
 
   return (
     <>
-    
       <ResumeContext.Provider
         value={{
           resumeData,
@@ -68,8 +67,8 @@ export default function Builder(props) {
         />
         <div className="f-col gap-4 md:flex-row justify-evenly max-w-full md:mx-auto md:h-screen">
           {!formClose && (
-            <div className="relative w-full h-full md:overflow-y-scroll bg-black">
-              <div className="w-full absolute inset-0">
+            <div className="relative w-full h-full md:overflow-y-scroll exclude-print bg-black">
+              <div className="w-full absolute inset-0 z-0">
                 <SparklesCore
                   id="tsparticlesfullpage"
                   background="transparent"

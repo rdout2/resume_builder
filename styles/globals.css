@@ -117,7 +117,7 @@
 
 @media print {
     .exclude-print {
-        display: none;
+        display: none !important;
     }
 
     .rm-padding-print {
