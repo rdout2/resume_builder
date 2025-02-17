@@ -166,52 +166,42 @@ const Preview = () => {
       <A4PageWrapper>
         <DragDropContext onDragEnd={currentTemplate === "template1" ? onDragEnd : handleTemplateTwoDragEnd}>
           {currentTemplate === "template1" ? (
-            <div className="f-col items-center mb-1">
-              {resumeData.profilePicture.length > 0 && (
-                <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-[rgb(5,234,250)]">
-                  <Image
-                    src={resumeData.profilePicture}
-                    alt="profile"
-                    width={100}
-                    height={100}
-                    className="object-cover h-full w-full"
-                  />
+            <div className="w-full h-full bg-white p-4">
+              <div className="text-center mb-2">
+                <h1 className="name">{resumeData.name}</h1>
+                <p className="profession">{resumeData.position}</p>
+                <ContactInfo
+                  mainclass="flex flex-row gap-1 contact justify-center"
+                  linkclass="inline-flex items-center gap-1"
+                  teldata={resumeData.contactInformation}
+                  emaildata={resumeData.email}
+                  addressdata={resumeData.address}
+                  telicon={<MdPhone />}
+                  emailicon={<MdEmail />}
+                  addressicon={<MdLocationOn />}
+                />
+                <div className="flex justify-center items-center gap-2 mt-1 text-sm">
+                  {resumeData.socialMedia.map((socialMedia, index) => {
+                    return (
+                      <a
+                        href={`http://${socialMedia.link}`}
+                        aria-label={socialMedia.socialMedia}
+                        key={index}
+                        title={socialMedia.socialMedia}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-[2px] text-blue-600 hover:text-blue-800 transition-colors"
+                      >
+                        {icons.map((icon, index) => {
+                          if (icon.name === socialMedia.socialMedia.toLowerCase()) {
+                            return <span key={index} className="text-sm">{icon.icon}</span>;
+                          }
+                        })}
+                        {socialMedia.link.split('/').pop()}
+                      </a>
+                    );
+                  })}
                 </div>
-              )}
-              <h1 className="name">{resumeData.name}</h1>
-              <p className="profession">{resumeData.position}</p>
-              <ContactInfo
-                mainclass="flex flex-row gap-1 mb-1 contact"
-                linkclass="inline-flex items-center gap-1"
-                teldata={resumeData.contactInformation}
-                emaildata={resumeData.email}
-                addressdata={resumeData.address}
-                telicon={<MdPhone />}
-                emailicon={<MdEmail />}
-                addressicon={<MdLocationOn />}
-              />
-              <div className="grid grid-cols-3 gap-1">
-                {resumeData.socialMedia.map((socialMedia, index) => {
-                  return (
-                    <a
-                      href={`http://${socialMedia.link}`}
-                      aria-label={socialMedia.socialMedia}
-                      key={index}
-                      title={socialMedia.socialMedia}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1 social-media"
-                      style={socialMedia.link.length > 32 ? { wordWrap: "break-word", display: "inline-block" } : {}}
-                    >
-                      {icons.map((icon, index) => {
-                        if (icon.name === socialMedia.socialMedia.toLowerCase()) {
-                          return <span key={index}>{icon.icon}</span>;
-                        }
-                      })}
-                      {socialMedia.link}
-                    </a>
-                  );
-                })}
               </div>
               <hr className="border-dashed my-2" />
               {/* two column start */}
