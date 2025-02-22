@@ -1,43 +1,89 @@
-# Free Resume Maker
-A minimal, ATS-friendly resume maker that we all need.
+# 🚀 Free Resume Maker
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+A modern, AI-powered, ATS-optimized resume builder featuring professionally designed templates and smart content suggestions.
 
-## Getting Started
+![Preview](preview.png)
 
-First, run the development server:
+## ✨ Key Features
 
-\`\`\`
+- **AI-Powered Content Suggestions**: Smart content optimization using Google's Gemini API
+- **Multiple Professional Templates**: Choose from carefully crafted, industry-standard resume layouts
+- **Smart Content Enhancement**: Get real-time suggestions to improve your resume content
+- **ATS-Friendly**: Engineered to pass Applicant Tracking Systems with flying colors
+- **Real-time Preview**: Instant visual feedback as you build your resume
+- **Drag & Drop Sections**: Easily customize section order to highlight your strengths
+- **Project Links**: Showcase your work with integrated project links and icons
+- **Modern UI/UX**: Clean, intuitive interface with a seamless user experience
+- **Export to PDF**: One-click PDF download for your polished resume
+- **Responsive Design**: Perfect resume building experience across all devices
+- **Data Persistence**: Auto-saves your progress using local storage
+- **Zero Cost**: Completely free and open-source
+
+## 🛠️ Built With
+
+- Next.js - React Framework
+- Tailwind CSS - Styling
+- Google Gemini API - AI Content Suggestions
+- React Beautiful DnD - Drag and Drop functionality
+- React Icons - Professional icons
+- Local Storage - Data persistence
+
+## 📦 Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/HOTHEAD01TH/free-resume-maker.git
+```
+
+2. Navigate to the project directory:
+```bash
+cd free-resume-maker
+```
+
+3. Install dependencies:
+```bash
+npm install
+```
+
+4. Set up environment variables:
+```bash
+GEMINI_API_KEY=your_api_key_here
+```
+
+5. Start the development server:
+```bash
 npm run dev
-# or
-yarn dev
+```
 
-\`\`\`
+6. Open your browser and navigate to `http://localhost:3000` to see the application in action.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📝 Usage Tips
 
-You can start editing the page by modifying \`app/page.tsx\`. The page auto-updates as you edit the file.
+1. **AI Suggestions**: Click the lightbulb icon to get smart content improvements
+2. **Profile Section**: Start with your personal information and professional summary
+3. **Experience & Projects**: Use action verbs and quantify achievements
+4. **Skills & Certifications**: Include relevant technical and soft skills
+5. **Project Links**: Add GitHub/live links to showcase your work
+6. **Customization**: Drag and drop sections to create the perfect layout
+7. **Download**: Before downloading, disable header/footer in print settings for optimal PDF output
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🤝 Contributing
 
-## Features
-- **ATS-Friendly**: Ensure your resume passes Applicant Tracking Systems (ATS).
-- **Minimal Design**: Clean and modern layout for creating professional resumes.
-- **Downloadable PDF**: Export resumes in PDF format.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-**Note:** When downloading the resume, make sure to turn off the header and footer print options in your browser settings for optimal results.
+## 📄 License
 
-## Learn More
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
-To learn more about Next.js, take a look at the following resources:
+## 🙏 Acknowledgments
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Special thanks to the open-source community and [Github Projects](https://x.com/githubprojects)
+- Inspired by modern recruitment needs and ATS requirements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ⚠️ Important Note
 
-## Deploy on Vercel
+When downloading your resume as PDF, ensure you disable header and footer in your browser's print settings for the best results.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Made with ❤️ by Zaid for job seekers worldwide!

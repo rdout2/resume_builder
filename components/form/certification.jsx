@@ -7,38 +7,59 @@ const Certification = () => {
   const skillType = "certifications";
   const title = "Certifications";
 
-  const handleSkills = (e, index, skillType) => {
-    const newSkills = [...resumeData[skillType]];
-    newSkills[index] = e.target.value;
-    setResumeData({ ...resumeData, [skillType]: newSkills });
+  const handleCertification = (e, index) => {
+    const newCertifications = [...resumeData[skillType]];
+    newCertifications[index] = {
+      ...newCertifications[index],
+      [e.target.name]: e.target.value
+    };
+    setResumeData({ ...resumeData, [skillType]: newCertifications });
   };
 
-  const addSkill = () => {
-    setResumeData({ ...resumeData, [skillType]: [...resumeData[skillType], ""] });
+  const addCertification = () => {
+    setResumeData({
+      ...resumeData,
+      [skillType]: [
+        ...resumeData[skillType],
+        { name: "", issuer: "" }
+      ]
+    });
   };
 
-  const removeSkill = (index) => {
-    const newSkills = [...resumeData[skillType]];
-    newSkills.splice(-1, 1);
-    setResumeData({ ...resumeData, [skillType]: newSkills });
-  };  
+  const removeCertification = () => {
+    const newCertifications = [...resumeData[skillType]];
+    newCertifications.pop();
+    setResumeData({ ...resumeData, [skillType]: newCertifications });
+  };
 
   return (
     <div className="flex-col-gap-2">
       <h2 className="input-title">{title}</h2>
-      {resumeData[skillType].map((skill, index) => (
+      {resumeData[skillType].map((certification, index) => (
         <div key={index} className="f-col">
           <input
             type="text"
-            placeholder={title}
-            name={title}
+            placeholder="Certification Name"
+            name="name"
             className="w-full other-input"
-            value={skill}
-            onChange={(e) => handleSkills(e, index, skillType)}
+            value={certification.name}
+            onChange={(e) => handleCertification(e, index)}
+          />
+          <input
+            type="text"
+            placeholder="Issuer"
+            name="issuer"
+            className="w-full other-input"
+            value={certification.issuer}
+            onChange={(e) => handleCertification(e, index)}
           />
         </div>
       ))}
-      <FormButton size={resumeData[skillType].length} add={addSkill} remove={removeSkill} />
+      <FormButton 
+        size={resumeData[skillType].length} 
+        add={addCertification} 
+        remove={removeCertification} 
+      />
     </div>
   );
 };

@@ -14,6 +14,7 @@ import Projects from "../components/form/Projects";
 import Education from "../components/form/Education";
 import dynamic from "next/dynamic";
 import Certification from "../components/form/certification";
+import { SparklesCore } from "../components/ui/sparkles";
 
 const ResumeContext = createContext(DefaultResumeData);
 
@@ -51,7 +52,6 @@ export default function Builder(props) {
 
   return (
     <>
-    
       <ResumeContext.Provider
         value={{
           resumeData,
@@ -67,25 +67,36 @@ export default function Builder(props) {
         />
         <div className="f-col gap-4 md:flex-row justify-evenly max-w-full md:mx-auto md:h-screen">
           {!formClose && (
-            <form className="p-4 bg-[rgb(5,234,250)] exclude-print w-full h-full md:overflow-y-scroll">
-              <LoadUnload/>
-              <PersonalInformation />
-              <SocialMedia />
-              <Summary />
-              <Education />
-              <WorkExperience />
-              <Projects />
-              {
-                resumeData.skills.map((skill, index) => (
+            <div className="relative w-full h-full md:overflow-y-scroll exclude-print bg-black">
+              <div className="w-full absolute inset-0 z-0">
+                <SparklesCore
+                  id="tsparticlesfullpage"
+                  background="transparent"
+                  minSize={0.6}
+                  maxSize={1.4}
+                  particleDensity={100}
+                  className="w-full h-full"
+                  particleColor="#FFFFFF"
+                />
+              </div>
+              <form className="relative z-10 p-4 bg-black/30">
+                <LoadUnload/>
+                <PersonalInformation />
+                <SocialMedia />
+                <Summary />
+                <Education />
+                <WorkExperience />
+                <Projects />
+                {resumeData.skills.map((skill, index) => (
                   <Skill
                     title={skill.title}
                     key={index}
                   />
-                ))
-              }
-              <Language />
-              <Certification />
-            </form>
+                ))}
+                <Language />
+                <Certification />
+              </form>
+            </div>
           )}
           <Preview className="w-full h-full" />
         </div>

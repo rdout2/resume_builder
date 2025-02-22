@@ -1,6 +1,7 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
 import { ResumeContext } from "../../pages/builder";
+import AISuggestionButton from '../ai/AISuggestionButton';
 
 const Projects = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
@@ -50,12 +51,19 @@ const Projects = () => {
           />
           <input
             type="text"
-            placeholder="Link"
+            placeholder="Include https:// in the link"
             name="link"
             className="w-full other-input"
             value={project.link}
             onChange={(e) => handleProjects(e, index)}
           />
+          <div className="flex justify-between items-center">
+            <label>Description</label>
+            <AISuggestionButton 
+              section="project description" 
+              content={project.description} 
+            />
+          </div>
           <textarea
             type="text"
             placeholder="Description"
@@ -65,6 +73,13 @@ const Projects = () => {
             maxLength="250"
             onChange={(e) => handleProjects(e, index)}
           />
+          <div className="flex justify-between items-center">
+            <label>Key Achievements</label>
+            <AISuggestionButton 
+              section="project achievements" 
+              content={project.keyAchievements} 
+            />
+          </div>
           <textarea
             type="text"
             placeholder="Key Achievements"
