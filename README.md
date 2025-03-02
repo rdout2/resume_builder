@@ -84,6 +84,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 When downloading your resume as PDF, ensure you disable header and footer in your browser's print settings for the best results.
 
----
 
-Made with ❤️ by Zaid for job seekers worldwide!
